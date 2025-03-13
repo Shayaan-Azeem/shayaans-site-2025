@@ -8,25 +8,26 @@ interface ImageGalleryProps {
 }
 
 export default function ImageGallery({ orientation = 'vertical' }: ImageGalleryProps) {
-  // Images array to be duplicated for infinite scroll
+  // Keep track of number of complete scrolls
+  const [scrollCount, setScrollCount] = useState(0)
+  // Track if animation should continue
+  const [shouldAnimate, setShouldAnimate] = useState(true)
+
   const images = [
     { src: "/photo1.jpg?height=400&width=600", alt: "Event photo" },
     { src: "/photo2.jpg?height=400&width=600", alt: "Presentation photo" },
     { src: "/photo3.jpg?height=400&width=600", alt: "Conference photo" },
     { src: "/photo4.jpg?height=400&width=600", alt: "Additional photo" },
     { src: "/photo5.jpg?height=400&width=600", alt: "Summit photo" },
+    { src: "/photo6.jpg?height=400&width=600", alt: "Team photo" },
+    { src: "/photo7.jpg?height=400&width=600", alt: "Project photo" },
   ]
 
-  // Duplicate the images array to create the illusion of infinite scrolling
-  const allImages = [...images, ...images, ...images]
+  // Only duplicate images twice now instead of three times
+  const allImages = [...images, ...images]
 
-  // Generate random tilts for each image (between -3 and 3 degrees)
   const imageTilts = allImages.map(() => (Math.random() * 6 - 3).toFixed(2))
-
-  // Ref for the container to control scrolling
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-
-  // State to track if user is manually scrolling
   const [isUserScrolling, setIsUserScrolling] = useState(false)
   const userScrollTimeout = useRef<NodeJS.Timeout | null>(null)
 
@@ -34,64 +35,61 @@ export default function ImageGallery({ orientation = 'vertical' }: ImageGalleryP
     const container = scrollContainerRef.current
     if (!container) return
 
-    // Set initial scroll position to start in the middle of the duplicated images
-    container.scrollTop = container.scrollHeight / 3
+    // Set initial scroll position to start at the beginning
+    container.scrollTop = 0
 
-    // Animation function for continuous scrolling
     let animationFrameId: number
     let lastTime = 0
-    const scrollSpeed = 0.2 // pixels per millisecond - reduced for slower scrolling
+    const scrollSpeed = 0.2
 
     const animate = (timestamp: number) => {
       if (!lastTime) lastTime = timestamp
       const deltaTime = timestamp - lastTime
       lastTime = timestamp
 
-      // Only auto-scroll if user isn't manually scrolling
-      if (!isUserScrolling && container) {
+      if (!isUserScrolling && container && shouldAnimate) {
         container.scrollTop += scrollSpeed * deltaTime
 
-        // If we've scrolled past the second set of images, reset to the first set
-        if (container.scrollTop >= (container.scrollHeight * 2) / 3) {
-          container.scrollTop = container.scrollHeight / 3 - images.length * 100
-        }
-
-        // If we've scrolled above the first set, reset to the second set
-        if (container.scrollTop <= container.scrollHeight / 3 - images.length * 100) {
-          container.scrollTop = (container.scrollHeight * 2) / 3 - 100
+        // Check if we've completed a full scroll
+        if (container.scrollTop >= container.scrollHeight / 2) {
+          setScrollCount(prev => {
+            const newCount = prev + 1
+            // Stop animation after 2 complete scrolls
+            if (newCount >= 2) {
+              setShouldAnimate(false)
+              // Reset to the beginning
+              container.scrollTop = 0
+            }
+            return newCount
+          })
         }
       }
 
-      animationFrameId = requestAnimationFrame(animate)
+      if (shouldAnimate) {
+        animationFrameId = requestAnimationFrame(animate)
+      }
     }
 
-    // Start the animation
-    animationFrameId = requestAnimationFrame(animate)
+    if (shouldAnimate) {
+      animationFrameId = requestAnimationFrame(animate)
+    }
 
     // Handle user scroll events
     const handleScroll = () => {
       setIsUserScrolling(true)
-
-      // Clear any existing timeout
       if (userScrollTimeout.current) {
         clearTimeout(userScrollTimeout.current)
       }
-
-      // Set a timeout to resume auto-scrolling after user stops scrolling
       userScrollTimeout.current = setTimeout(() => {
         setIsUserScrolling(false)
       }, 2000)
     }
 
     container.addEventListener("touchstart", () => setIsUserScrolling(true), { passive: true })
-    container.addEventListener(
-      "touchend",
-      () => {
-        if (userScrollTimeout.current) clearTimeout(userScrollTimeout.current)
-        userScrollTimeout.current = setTimeout(() => setIsUserScrolling(false), 2000)
-      },
-      { passive: true },
-    )
+    container.addEventListener("touchend", () => {
+      if (userScrollTimeout.current) clearTimeout(userScrollTimeout.current)
+      userScrollTimeout.current = setTimeout(() => setIsUserScrolling(false), 2000)
+    }, { passive: true })
     container.addEventListener("mousedown", () => setIsUserScrolling(true))
     container.addEventListener("mouseup", () => {
       if (userScrollTimeout.current) clearTimeout(userScrollTimeout.current)
@@ -99,7 +97,6 @@ export default function ImageGallery({ orientation = 'vertical' }: ImageGalleryP
     })
     container.addEventListener("wheel", handleScroll, { passive: true })
 
-    // Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId)
       if (userScrollTimeout.current) clearTimeout(userScrollTimeout.current)
@@ -109,7 +106,7 @@ export default function ImageGallery({ orientation = 'vertical' }: ImageGalleryP
       container.removeEventListener("mouseup", () => setIsUserScrolling(false))
       container.removeEventListener("wheel", handleScroll)
     }
-  }, [isUserScrolling, images.length])
+  }, [isUserScrolling, shouldAnimate])
 
   if (orientation === 'horizontal') {
     return (

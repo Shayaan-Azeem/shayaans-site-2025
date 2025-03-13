@@ -10,6 +10,7 @@ interface Photo {
   location: string;
   image: string;
   category: 'polaroids' | 'film' | 'disposable';
+  songUrl?: string;
 }
 
 // Loading fallback component
@@ -48,143 +49,147 @@ function PhotosPageContent() {
   const polaroidPhotos: Photo[] = [
     {
       id: "1",
-      title: "the start of something big w/shanti",
-      location: "Waterloo, Toronto",
-      image: "/polaroids/2vs bowl.PNG",
-      category: 'polaroids'
+      title: "the start of something big",
+      location: "WeWork Toronto",
+      image: "/polaroids/the start of something big.png",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/1zgHn1EqUyA0HqNYMdJ5ia?si=b10022a78daa4fa1"
     },
     {
       id: "2",
-      title: "apocalypse hacks w/ greg",
+      title: "apocalypse w/ greg",
       location: "Shopify Toronto",
-      image: "/polaroids/omngreg.png",
-      category: 'polaroids'
+      image: "/polaroids/apogreg.png",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/0mEdbdeRFQwBhN4xfyIeUM?si=e6bb613c681245fd"
     },
     {
       id: "3",
       title: "lost in toronto",
       location: "Toronto, ON",
-      image: "/polaroids/toronto.png",
-      category: 'polaroids'
+      image: "/polaroids/lost in toronto.png",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/5kDgJffgJ0lYHTSiaXFWNw?si=590001762a2840ce"
     },
     {
       id: "4",
-      title: "end of the beginning - djp",
-      location: "Chicago, IL",
-      image: "/polaroids/chicago.png",
-      category: 'polaroids'
+      title: "the one where ayaan turns five",
+      location: "Jersey City, NJ",
+      image: "/polaroids/ayaanturns5.png",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/4I4aQGNJ2HufloNtB65nxR?si=c579a5e4bb6042c2"
     },
     {
       id: "5",
       title: "airplane thoughts",
       location: "Above Michigan",
       image: "/polaroids/airplanethoughts.png",
-      category: 'polaroids'
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/19nu3H3vjeZ505i450lz8R?si=424f25c49b9f4b30"
     },
     {
       id: "6",
-      title: "the one where ayaan turns five",
-      location: "Jersey City, NJ",
-      image: "/polaroids/ayaanturns5.png",
-      category: 'polaroids'
+      title: "break things build better",
+      location: "Shopify Toronto",
+      image: "/polaroids/breakbuildbetter.png",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/1oAwsWBovWRIp7qLMGPIet?si=d9e5bb4900954ea5"
     },
     {
       id: "7",
-      title: "dumbo!",
-      location: "New York City, NY",
-      image: "/polaroids/dumbo.png",
-      category: 'polaroids'
-    },
-    {
-      id: "8",
       title: "water water water loo loo loo",
       location: "Waterloo, ON",
       image: "/polaroids/water water water.png",
-      category: 'polaroids'
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/1WaqQIJ0iENGWZ1QmYvYNK?si=2c7ace1c075042e"
+    },
+    {
+      id: "8",
+      title: "me and my favourite future nobel physicist",
+      location: "Oakville, ON",
+      image: "/polaroids/nobel physic.PNG",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/7kv7zBjMtVf0eIJle2VZxn?si=997f5b3c5ef24430"
     },
     {
       id: "9",
-      title: "apohacks w/ evelyn",
-      location: "Shopify Toronto",
-      image: "/polaroids/apohacks.png",
-      category: 'polaroids'
+      title: "777 a little piece of heaven",
+      location: "Toronto, ON",
+      image: "/polaroids/777.png",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/32J2bR5gnepj9uHPGVGStr?si=84a55b42ab404585"
     },
     {
       id: "10",
-      title: "break things build better",
+      title: "apocalypse w/ evelyn",
       location: "Shopify Toronto",
-      image: "/polaroids/TheGang.png",
-      category: 'polaroids'
+      image: "/polaroids/apohackswev.png",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/5dn6QANKbf76pANGjMBida?si=92c84e6d67764094"
     },
     {
       id: "11",
-      title: "new york new me",
+      title: "dumbo!",
       location: "New York City, NY",
-      image: "/polaroids/newyorknewme.png",
-      category: 'polaroids'
+      image: "/polaroids/dumbo.png",
+      category: 'polaroids',
+      songUrl: " https://open.spotify.com/track/6wXPV6dNRAhFavrRaCdMXT?si=990666c03feb4eea"
     },
     {
       id: "12",
-      title: "senior sunrise",
+      title: "future 100x engineers",
       location: "Oakville, ON",
-      image: "/polaroids/seniorsunrise.png",
-      category: 'polaroids'
+      image: "/polaroids/10xeng.png",
+      category: 'polaroids',
+      songUrl: ""
     },
     {
       id: "13",
-      title: "chem bros",
-      location: "White Oaks SS",
-      image: "/polaroids/chembros.PNG",
-      category: 'polaroids'
+      title: "entropy ifyyk",
+      location: "Oakville, ON",
+      image: "/polaroids/entropy ifyyk.PNG",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/551xyaSJsg8hILXFq9JdST?si=b8651a2af5384226"
     },
     {
       id: "14",
-      title: "harvard hoodie",
-      location: "Cambridge, MA",
-      image: "/polaroids/harvardhoodie.png",
-      category: 'polaroids'
+      title: "senior sunrise",
+      location: "Oakville, ON",
+      image: "/polaroids/senior sunrise.PNG",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/0NUqi0ps17YpLUC3kgsZq0?si=027549695c894f41"
     },
     {
       id: "15",
-      title: "co-founders core",
-      location: "Hack Club HQ",
-      image: "/polaroids/cofounderscore.png",
-      category: 'polaroids'
+      title: "end of the beginning - djo",
+      location: "Chicago, IL",
+      image: "/polaroids/end of the begining.png",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/3qhlB30KknSejmIvZZLjOD?si=2d6b0e552475446b"
     },
     {
       id: "16",
-      title: "sharma and azeem",
-      location: "Oakville, ON",
-      image: "/polaroids/sharmaandazeem.PNG",
-      category: 'polaroids'
+      title: "angelhacks toronto",
+      location: "WeWork Toronto",
+      image: "/polaroids/thegang.png",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/6wXPV6dNRAhFavrRaCdMXT?si=990666c03feb4eea"
     },
     {
       id: "17",
-      title: "presidents!",
-      location: "White Oaks SS",
-      image: "/polaroids/presidents!.PNG",
-      category: 'polaroids'
+      title: "spanish lattes in nyc",
+      location: "New York City, NY",
+      image: "/polaroids/spanish lattes in nyc.png",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/0TL0LFcwIBF5eX7arDIKxY?si=5dab4294e9d84b81"
     },
     {
       id: "18",
-      title: "photobomb",
-      location: "Toronto, ON",
-      image: "/polaroids/photobomb.PNG",
-      category: 'polaroids'
-    },
-    {
-      id: "19",
-      title: "guanda & azeem",
+      title: "robotics exec social",
       location: "Oakville, ON",
-      image: "/polaroids/guandazeem.png",
-      category: 'polaroids'
-    },
-    {
-      id: "20",
-      title: "lucky sevens",
-      location: "Las Vegas, NV",
-      image: "/polaroids/777.png",
-      category: 'polaroids'
+      image: "/polaroids/execsocial.PNG",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/1Ukxccao1BlWrPhYkcXbwZ?si=9fee189e2ea547bb"
     }
   ];
 
@@ -525,13 +530,13 @@ function PhotosPageContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
             {displayPhotos.map((photo) => (
               <div key={photo.id} className="flex flex-col items-center group">
-                <div className="relative overflow-hidden shadow-lg transition-transform duration-300 group-hover:scale-105">
+                <a href={photo.songUrl} target="_blank" rel="noopener noreferrer" className="relative overflow-hidden shadow-lg transition-transform duration-300 group-hover:scale-105">
                   <img 
                     src={photo.image} 
                     alt={photo.title || photo.location} 
                     className="w-full max-w-[180px] object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
-                </div>
+                </a>
                 <div className="text-center mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {photo.title && <p className="text-sm text-white">{photo.title}</p>}
                   <p className="text-xs text-gray-400">{photo.location}</p>

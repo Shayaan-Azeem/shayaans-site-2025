@@ -39,7 +39,7 @@ const projects: Project[] = [
     title: "White Oaks Robotics Club",
     description: "we make robots",
     year: "Present",
-    image: "/Robotics Photo.jpg",
+    image: "/roboticsphoto.png",
     slug: "white-oaks-robotics-club",
     content: "Full description of White Oaks Robotics Club project..."
   }

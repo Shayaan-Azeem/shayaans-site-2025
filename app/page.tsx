@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import ImageGallery from "./image-gallery";
 
@@ -35,7 +36,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Navigation - Updated to use "Photos" instead of "Timeline" or "Film" */}
+            {/* Navigation */}
             <nav>
               <ul className="flex space-x-6 text-lg">
                 <li>
@@ -63,64 +64,157 @@ export default function Home() {
 
             {/* Bio */}
             <div className="space-y-6">
-              <p className="text-lg text-gray-300">
-                I&apos;m a high school senior from <span className="font-medium text-white">Toronto</span> with a passion for computer science and system design. I&apos;m currently:
+              <p className="text-lg text-gray-400">
+                I&apos;m a high school senior from{' '}
+                <a href="https://open.spotify.com/track/1zi7xx7UVEFkmKfv06H8x0?si=eccb693cf4164333&nd=1&dlsi=8500e881b915446e" 
+                   className="relative inline-block text-white hover:text-gray-300 transition-colors before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-white before:bottom-0 before:left-0 before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300"
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                  Toronto
+                </a>{' '}
+                with a passion for computer science and system design. I&apos;m currently:
               </p>
 
               {/* Current Activities */}
               <ul className="space-y-4">
-                <li className="flex items-start">
+                <li className="flex items-start text-gray-400">
                   <span className="mr-2">•</span>
                   <div>
-                    Building drones 🚁 with the support of Bloomberg Philanthropies and The Town of Oakville to predict forest fires and map vegetation using AI/ML.
+                    Building drones with the support of{' '}
+                    <a href="https://www.bloomberg.org/government-innovation/spurring-innovation-in-cities/youth-climate-action-fund/" 
+                       className="relative inline-block text-white hover:text-gray-300 transition-colors before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-white before:bottom-0 before:left-0 before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300"
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                      Bloomberg Philanthropies
+                    </a>{' '}
+                    and{' '}
+                    <a href="https://www.oakville.ca/town-hall/news-notices/2024-mayor-s-news-archive/mayor-rob-burton-announces-winners-of-the-2024-youth-climate-action-fund/" 
+                       className="relative inline-block text-white hover:text-gray-300 transition-colors before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-white before:bottom-0 before:left-0 before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300"
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                      The Town of Oakville
+                    </a>{' '}
+                    to predict forest fires and map vegetation using AI/ML.
                   </div>
                 </li>
-                <li className="flex items-start">
+                
+                <li className="flex items-start text-gray-400">
                   <span className="mr-2">•</span>
                   <div>
-                    Leading White Oaks Robotics 🤖 (8433W), a community of over 100 students in Oakville, Ontario, competing in VEX Robotics.
+                    Leading{' '}
+                    <a href="https://wossrobotics.ca" 
+                       className="relative inline-block text-white hover:text-gray-300 transition-colors before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-white before:bottom-0 before:left-0 before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300"
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                      White Oaks Robotics Club
+                    </a>{' '}
+                    <Image 
+                      src="/minilogo/wossroboticslogo.png" 
+                      alt="WOSS Robotics Logo" 
+                      width={16} 
+                      height={16} 
+                      className="inline mx-1 hover:rotate-180 transition-transform duration-500" 
+                    />{' '}
+                    (<a href="https://www.robotevents.com/teams/V5RC/8433W"
+                        className="relative inline-block text-white hover:text-gray-300 transition-colors before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-white before:bottom-0 before:left-0 before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                      8433W
+                    </a>), a community of over 100 students in Oakville, Ontario, competing in VEX.
                   </div>
                 </li>
-                <li className="flex items-start">
+                
+                <li className="flex items-start text-gray-400">
                   <span className="mr-2">•</span>
                   <div>
-                    Growing @starthackclub 📢, creating relatable content and sharing stories of teen developers from around the world.
+                    Growing{' '}
+                    <a href="https://www.instagram.com/starthackclub/" 
+                       className="relative inline-block text-white hover:text-gray-300 transition-colors before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-white before:bottom-0 before:left-0 before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300"
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                      @starthackclub
+                    </a>{' '}
+                    <Image 
+                      src="/minilogo/hclogoround.png" 
+                      alt="Hack Club Logo" 
+                      width={16} 
+                      height={16} 
+                      className="inline mx-1 hover:rotate-180 transition-transform duration-500" 
+                    />{' '}
+                    creating relatable content and sharing stories of teen developers from around the world.
                   </div>
                 </li>
               </ul>
 
               {/* Previous Experience */}
               <div>
-                <p className="text-lg text-gray-300">Recently, I:</p>
+                <p className="text-lg text-gray-400">Recently, I:</p>
                 <ul className="space-y-4 mt-4">
-                  <li className="flex items-start">
+                  <li className="flex items-start text-gray-400">
                     <span className="mr-2">•</span>
                     <div>
-                      Organized Apocalypse Hacks 🎉—Canada's largest high school hackathon—bringing together 150+ students to inspire the next generation of programmers.
+                      Organized{' '}
+                      <a href="https://apocalypse.hackclub.com/" 
+                         className="relative inline-block text-white hover:text-gray-300 transition-colors before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-white before:bottom-0 before:left-0 before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300"
+                         target="_blank" 
+                         rel="noopener noreferrer">
+                        Apocalypse Hacks
+                      </a>{' '}
+                      <Image 
+                        src="/minilogo/apocalypse.png" 
+                        alt="Apocalypse Hacks Logo" 
+                        width={32} 
+                        height={32} 
+                        className="inline mx-1 hover:rotate-180 transition-transform duration-500" 
+                      />, Canada's largest high school hackathon, bringing together 150+ students to inspire the next generation of builders.
                     </div>
                   </li>
-                  <li className="flex items-start">
+                  
+                  <li className="flex items-start text-gray-400">
                     <span className="mr-2">•</span>
                     <div>
-                      Qualified for DECA ICDC 📈 in Orlando, placing in the Top 10 in Ontario.
+                      Won Bronze 🥉 at the{' '}
+                      <a href="https://wro-association.org/" 
+                         className="relative inline-block text-white hover:text-gray-300 transition-colors before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-white before:bottom-0 before:left-0 before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300"
+                         target="_blank" 
+                         rel="noopener noreferrer">
+                        Canadian World Robot Olympiad
+                      </a>.
                     </div>
                   </li>
-                  <li className="flex items-start">
+                  
+                  <li className="flex items-start text-gray-400">
                     <span className="mr-2">•</span>
                     <div>
-                      Qualified for the VEX World Robotics Championship 🏆, one of the only public school teams in Ontario to achieve this.
+                      Qualified for the{' '}
+                      <a href="https://recf.org/vex-robotics-world-championship/" 
+                         className="relative inline-block text-white hover:text-gray-300 transition-colors before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-white before:bottom-0 before:left-0 before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300"
+                         target="_blank" 
+                         rel="noopener noreferrer">
+                        VEX World Robotics Championship
+                      </a>{' '}
+                      🏆, one of the only public school teams in Ontario to achieve this.
                     </div>
                   </li>
-                  <li className="flex items-start">
+                  
+                  <li className="flex items-start text-gray-400">
+                    <span className="mr-2">•</span>
+                    <div>
+                      Qualified for{' '}
+                      <a href="https://www.deca.org/conferences/icdc" 
+                         className="relative inline-block text-white hover:text-gray-300 transition-colors before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-white before:bottom-0 before:left-0 before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300"
+                         target="_blank" 
+                         rel="noopener noreferrer">
+                        DECA ICDC
+                      </a>{' '}
+                      in Orlando, placing in the Top 10 🏅 in Ontario.
+                    </div>
+                  </li>
+                  
+                  <li className="flex items-start text-gray-400">
                     <span className="mr-2">•</span>
                     <div>
                       Worked on carbon sequestration estimation 🌍 using satellite imagery, comparing Random Forest and CNNs for accuracy, efficiency, and scalability in predicting forest carbon storage.
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">•</span>
-                    <div>
-                      Won Bronze 🥉 at the Canadian World Robot Olympiad.
                     </div>
                   </li>
                 </ul>
