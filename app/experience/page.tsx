@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 import { ChevronLeft, MoreHorizontal } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -124,7 +124,8 @@ function ExperienceBreadcrumb({ activeTab }: BreadcrumbProps) {
   );
 }
 
-const ExperiencePage: React.FC = () => {
+// Create a client component that uses useSearchParams
+function ExperienceContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tabParam = searchParams.get('tab');
@@ -440,6 +441,17 @@ const ExperiencePage: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
-export default ExperiencePage;
+// Main page component with Suspense
+export default function ExperiencePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
+        <div className="animate-pulse">Loading...</div>
+      </div>
+    }>
+      <ExperienceContent />
+    </Suspense>
+  );
+}
