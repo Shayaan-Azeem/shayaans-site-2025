@@ -124,8 +124,26 @@ function ExperienceBreadcrumb({ activeTab }: BreadcrumbProps) {
   );
 }
 
-// Create a client component that uses useSearchParams
-function ExperienceContent() {
+// Loading fallback component
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
+      <div className="animate-pulse">Loading...</div>
+    </div>
+  );
+}
+
+// Main page component
+export default function ExperiencePage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <ExperiencePageContent />
+    </Suspense>
+  );
+}
+
+// Content component that uses client-side hooks
+function ExperiencePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tabParam = searchParams.get('tab');
@@ -269,13 +287,8 @@ function ExperienceContent() {
     setMenuOpen(!menuOpen);
   };
 
-  const navigateToPage = (page: string) => {
-    window.location.href = `/${page}`;
-    setMenuOpen(false);
-  };
-
   const navigateToProject = (slug: string) => {
-    window.location.href = `/projects/${slug}`;
+    router.push(`/projects/${slug}`);
   };
 
   return (
@@ -440,18 +453,5 @@ function ExperienceContent() {
         </div>
       </div>
     </div>
-  );
-}
-
-// Main page component with Suspense
-export default function ExperiencePage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
-        <div className="animate-pulse">Loading...</div>
-      </div>
-    }>
-      <ExperienceContent />
-    </Suspense>
   );
 }
