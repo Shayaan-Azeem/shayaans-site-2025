@@ -1,0 +1,33 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated-text {
+    animation: fadeIn 1s ease-in-out forwards; /* Adjust duration and timing as needed */
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.typewriter {
+    font-size: 2em; /* Increase font size */
+    color: #3498db; /* Change text color to a prominent color */
+    overflow: hidden; /* Ensures the text is hidden until it is typed */
+    white-space: nowrap; /* Prevents text from wrapping */
+    border-right: 2px solid black; /* Creates a cursor effect */
+    width: 100%; /* Adjust as needed */
+    animation: typing 4s steps(30, end), blink 0.75s step-end infinite; /* Adjust duration and steps */
+} 
