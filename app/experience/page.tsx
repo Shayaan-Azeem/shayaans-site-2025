@@ -90,11 +90,11 @@ function ExperienceBreadcrumb({ activeTab }: BreadcrumbProps) {
               home
             </Link>
             <Link 
-              href="/timeline"
+              href="/experience"
               className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
               onClick={() => setMenuOpen(false)}
             >
-              timeline
+              experience
             </Link>
             <Link 
               href="/resume"
@@ -111,11 +111,11 @@ function ExperienceBreadcrumb({ activeTab }: BreadcrumbProps) {
               fieldnotes
             </Link>
             <Link 
-              href="/experience"
+              href="/photos"
               className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
               onClick={() => setMenuOpen(false)}
             >
-              experience
+              photos
             </Link>
           </div>
         </div>

@@ -35,7 +35,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Navigation */}
+            {/* Navigation - Updated to use "Photos" instead of "Timeline" or "Film" */}
             <nav>
               <ul className="flex space-x-6 text-lg">
                 <li>
@@ -44,8 +44,8 @@ export default function Home() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-gray-300 transition-colors">
-                    Timeline
+                  <Link href="/resume" className="hover:text-gray-300 transition-colors">
+                    Resume
                   </Link>
                 </li>
                 <li>
@@ -54,8 +54,8 @@ export default function Home() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-gray-300 transition-colors">
-                    Resume
+                  <Link href="/photos" className="hover:text-gray-300 transition-colors">
+                    Photos
                   </Link>
                 </li>
               </ul>
