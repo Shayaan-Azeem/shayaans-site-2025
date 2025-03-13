@@ -5,7 +5,14 @@ import ImageGallery from "./image-gallery";
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white font-sans">
-      <div className="container mx-auto px-4 py-12 md:py-16 max-w-6xl">
+      {/* Mobile Image Gallery - Only visible on mobile */}
+      <div className="md:hidden w-full">
+        <div className="py-4">
+          <ImageGallery orientation="horizontal" />
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-6 md:py-16 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Column - Content */}
           <div className="space-y-8">
@@ -121,9 +128,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Column - Images */}
-          <div>
-            <ImageGallery />
+          {/* Right Column - Images (only visible on desktop) */}
+          <div className="hidden md:block">
+            <ImageGallery orientation="vertical" />
           </div>
         </div>
       </div>

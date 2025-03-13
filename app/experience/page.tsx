@@ -1,7 +1,10 @@
-"use client"
+"use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, MoreHorizontal } from 'lucide-react';
+import React, { useState, useRef, useEffect } from "react";
+import { ChevronLeft, MoreHorizontal } from "lucide-react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import Breadcrumb from '@/components/Breadcrumb';
 
 interface Experience {
   id: string;
@@ -18,7 +21,7 @@ interface Award {
   title: string;
   organization: string;
   year: string;
-  type: 'tournament' | 'global';
+  type: "tournament" | "global";
   emoji?: string; // Added emoji property
 }
 
@@ -28,10 +31,109 @@ interface Project {
   description: string;
   year: string;
   image: string;
+  slug?: string; // Added for navigation
+}
+
+interface BreadcrumbProps {
+  activeTab: string;
+}
+
+// Custom breadcrumb for experience page to handle tabs
+function ExperienceBreadcrumb({ activeTab }: BreadcrumbProps) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  return (
+    <div className="absolute top-8 left-8 z-10">
+      <div className="text-sm hover:text-gray-300 transition-colors">
+        <Link href="/" className="hover:text-gray-300">SA</Link>
+        <span className="mx-1">/</span>
+        
+        <span onClick={toggleMenu} className="cursor-pointer hover:text-white mx-1">...</span>
+        <span className="mx-1">/</span>
+        
+        <Link href="/experience" className="hover:text-gray-300">experience</Link>
+        
+        {activeTab !== 'Work' && (
+          <>
+            <span className="mx-1">/</span>
+            <span className="text-white">{activeTab.toLowerCase()}</span>
+          </>
+        )}
+      </div>
+      
+      {menuOpen && (
+        <div className="absolute top-6 left-0 w-48 bg-black border border-gray-800 rounded-md shadow-lg z-10" ref={menuRef}>
+          <div className="py-1">
+            <Link 
+              href="/"
+              className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+              onClick={() => setMenuOpen(false)}
+            >
+              home
+            </Link>
+            <Link 
+              href="/timeline"
+              className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+              onClick={() => setMenuOpen(false)}
+            >
+              timeline
+            </Link>
+            <Link 
+              href="/resume"
+              className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+              onClick={() => setMenuOpen(false)}
+            >
+              resume
+            </Link>
+            <Link 
+              href="/fieldnotes"
+              className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+              onClick={() => setMenuOpen(false)}
+            >
+              fieldnotes
+            </Link>
+            <Link 
+              href="/experience"
+              className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+              onClick={() => setMenuOpen(false)}
+            >
+              experience
+            </Link>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 const ExperiencePage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'Work' | 'Projects' | 'Awards'>('Work');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get('tab');
+  
+  // Set initial tab based on URL parameter or default to 'Work'
+  const [activeTab, setActiveTab] = useState<'Work' | 'Projects' | 'Awards'>(
+    (tabParam as 'Work' | 'Projects' | 'Awards') || 'Work'
+  );
+  
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   
@@ -106,120 +208,81 @@ const ExperiencePage: React.FC = () => {
     { id: '13', title: 'DECA Stock Market Game Finalist', organization: 'North Atlantic (Top 30/1200+)', year: '2023', type: 'global', emoji: '🤑' },
   ];
 
-  // Update projects data
+  // Update projects data with slugs for navigation
   const projects: Project[] = [
     {
       id: "1",
       title: "Apocalypse Hacks",
       description: "Canada's largest high school hackathon",
       year: "2024",
-      image: "vickyapo.jpeg"
+      image: "vickyapo.jpeg",
+      slug: "apocalypse-hacks"
     },
     {
       id: "2",
       title: "TensorForest",
       description: "drone",
       year: "Present",
-      image: "drongreen.jpg"
+      image: "drongreen.jpg",
+      slug: "tensorforest"
     },
     {
       id: "3",
       title: "White Oaks Robotics Club",
       description: "we make robots",
       year: "Present",
-      image: "Robotics Photo.jpg"
+      image: "Robotics Photo.jpg",
+      slug: "white-oaks-robotics-club"
     }
   ];
 
- // Close menu when clicking outside
- useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
-    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-      setMenuOpen(false);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleTabClick = (tab: 'Work' | 'Projects' | 'Awards') => {
+    setActiveTab(tab);
+    
+    // Update URL with the tab parameter
+    const params = new URLSearchParams(searchParams);
+    if (tab === 'Work') {
+      params.delete('tab'); // Remove parameter for default tab
+    } else {
+      params.set('tab', tab);
     }
+    
+    // Update the URL without refreshing the page
+    router.replace(`/experience?${params.toString()}`);
   };
 
-  document.addEventListener('mousedown', handleClickOutside);
-  return () => {
-    document.removeEventListener('mousedown', handleClickOutside);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
-}, []);
 
-const handleTabClick = (tab: 'Work' | 'Projects' | 'Awards') => {
-  setActiveTab(tab);
-};
+  const navigateToPage = (page: string) => {
+    window.location.href = `/${page}`;
+    setMenuOpen(false);
+  };
 
-const toggleMenu = () => {
-  setMenuOpen(!menuOpen);
-};
+  const navigateToProject = (slug: string) => {
+    window.location.href = `/projects/${slug}`;
+  };
 
-const navigateToPage = (page: string) => {
-  window.location.href = `/${page}`;
-  setMenuOpen(false);
-};
-
-const navigateToHome = () => {
-  window.location.href = '/';
-};
-
-return (
-  <div className="min-h-screen bg-black text-white flex flex-col">
-    {/* Navigation bar */}
-    <nav className="p-4 flex items-center space-x-2">
-      <div className="flex items-center space-x-2">
-        <button onClick={navigateToHome} className="text-gray-400 hover:text-white">
-          sa
-        </button>
-        <span className="text-gray-400">/</span>
-        <button onClick={toggleMenu} className="text-gray-400 hover:text-white">
-          ...
-        </button>
-        <span className="text-gray-400">/</span>
-        <span className="text-white">
-          experience
-        </span>
-      </div>
-      
-      {menuOpen && (
-        <div className="absolute top-12 left-12 w-48 bg-black border border-gray-800 rounded-md shadow-lg z-10" ref={menuRef}>
-          <div className="py-1">
-            <button 
-              onClick={() => navigateToPage('home')}
-              className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
-            >
-              home
-            </button>
-            <button 
-              onClick={() => navigateToPage('timeline')}
-              className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
-            >
-              timeline
-            </button>
-            <button 
-              onClick={() => navigateToPage('resume')}
-              className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
-            >
-              resume
-            </button>
-            <button 
-              onClick={() => navigateToPage('fieldnotes')}
-              className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
-            >
-              fieldnotes
-            </button>
-            <button 
-              onClick={() => navigateToPage('experience')}
-              className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
-            >
-              experience
-            </button>
-          </div>
-        </div>
-      )}
-    </nav>
+  return (
+    <div className="min-h-screen bg-black text-white flex flex-col">
+      <ExperienceBreadcrumb activeTab={activeTab} />
 
       {/* Main content */}
-      <div className="flex-1 max-w-6xl mx-auto w-full px-4">
+      <div className="flex-1 max-w-6xl mx-auto w-full px-4 pt-20">
         <h1 className="text-4xl font text-center my-8 italic font-serif">My Experience</h1>
         
         {/* Tabs - Keeping the original tab names */}
@@ -253,9 +316,9 @@ return (
                   key={project.id} 
                   className="relative group cursor-pointer"
                   onClick={() => {
-                    // Convert title to URL-friendly slug
-                    const slug = project.title.toLowerCase().replace(/ /g, '-');
-                    window.location.href = `/projects/${slug}`;
+                    // Use the slug directly or generate one from the title if not provided
+                    const slug = project.slug || project.title.toLowerCase().replace(/ /g, '-');
+                    navigateToProject(slug);
                   }}
                 >
                   {/* Enhanced glow effect */}
@@ -316,7 +379,7 @@ return (
               ))}
             </div>
           ) : (
-            // Work/Projects content based on active tab
+            // Work/Experience content
             <div className="space-y-0 relative">
               {/* Vertical line - FIXED POSITION to center through circles */}
               <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-700" style={{ transform: 'translateX(-50%)' }}></div>

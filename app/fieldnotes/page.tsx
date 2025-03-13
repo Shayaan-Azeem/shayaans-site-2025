@@ -1,39 +1,108 @@
 'use client';
 
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Breadcrumb from '@/components/Breadcrumb';
 
 const blogPosts = [
   {
-    title: "The Human Simulation Lab",
+    title: "Hack The North 2024",
     date: "Jul 2024",
     image: "/photo2.jpg",
-    slug: "human-simulation-lab-1"
+    slug: "hack-the-north-2024"
   },
   {
-    title: "The Human Simulation Lab",
+    title: "What I Learnt From Organizing a Hackathon",
     date: "Jul 2024",
     image: "/droneblue.png",
-    slug: "human-simulation-lab-2"
+    slug: "what-i-learnt-from-organizing-a-hackathon"
   },
   {
-    title: "The Human Simulation Lab",
+    title: "You Can Just Do Things",
     date: "Jul 2024",
     image: "/roboticsphoto.jpg",
-    slug: "human-simulation-lab-3"
+    slug: "you-can-just-do-things"
   }
 ];
 
 export default function FieldNotes() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className="bg-black text-white min-h-screen p-6">
-      <div className="absolute top-8 left-8">
-        <Link href="/" className="text-sm hover:text-gray-300 transition-colors">
-          S3 / ... / fieldnotes
-        </Link>
+      <div className="absolute top-8 left-8 z-10">
+        <div className="text-sm hover:text-gray-300 transition-colors">
+          <Link href="/" className="hover:text-gray-300">SA</Link>
+          <span className="mx-1">/</span>
+          
+          <span onClick={toggleMenu} className="cursor-pointer hover:text-white mx-1">...</span>
+          <span className="mx-1">/</span>
+          
+          <span className="text-white">fieldnotes</span>
+        </div>
+        
+        {menuOpen && (
+          <div className="absolute top-6 left-0 w-48 bg-black border border-gray-800 rounded-md shadow-lg z-10" ref={menuRef}>
+            <div className="py-1">
+              <Link 
+                href="/"
+                className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+                onClick={() => setMenuOpen(false)}
+              >
+                home
+              </Link>
+              <Link 
+                href="/timeline"
+                className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+                onClick={() => setMenuOpen(false)}
+              >
+                timeline
+              </Link>
+              <Link 
+                href="/resume"
+                className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+                onClick={() => setMenuOpen(false)}
+              >
+                resume
+              </Link>
+              <Link 
+                href="/fieldnotes"
+                className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+                onClick={() => setMenuOpen(false)}
+              >
+                fieldnotes
+              </Link>
+              <Link 
+                href="/experience"
+                className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+                onClick={() => setMenuOpen(false)}
+              >
+                experience
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
       
-      <h1 className="text-4xl font-serif italic text-center mb-8">fieldnotes</h1>
+      <h1 className="text-4xl font-serif italic text-center mb-8 pt-20">fieldnotes</h1>
       <div className="space-y-12">
         {blogPosts.map((post, index) => (
           <Link 

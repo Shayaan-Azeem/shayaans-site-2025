@@ -1,8 +1,9 @@
 "use client"
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MoreHorizontal } from 'lucide-react';
+import Link from 'next/link';
 
+// Define the project data interface
 interface Project {
   id: string;
   title: string;
@@ -10,62 +11,47 @@ interface Project {
   year: string;
   image: string;
   slug: string;
-  overview: string;
-  background: string;
-  motivation: string;
-  team?: {
-    name: string;
-    link?: string;
-  }[];
+  content?: string; // For the full project content
 }
 
-const projects: Record<string, Project> = {
-  'apocalypse-hacks': {
+// Sample project data - ideally this would come from a database or API
+const projects: Project[] = [
+  {
     id: "1",
     title: "Apocalypse Hacks",
     description: "Canada's largest high school hackathon",
     year: "2024",
-    image: "vickyapo.jpeg",
-    slug: 'apocalypse-hacks',
-    overview: "Over Summer 2024, I worked on Canada's largest high school hackathon...",
-    background: "Apocalypse Hacks was created to bring together high school students...",
-    motivation: "The motivation behind Apocalypse Hacks came from...",
-    team: [
-      { name: "John Doe", link: "https://github.com/johndoe" },
-      { name: "Jane Smith", link: "https://github.com/janesmith" }
-    ]
+    image: "/vickyapo.jpeg",
+    slug: "apocalypse-hacks",
+    content: "Full description of Apocalypse Hacks project..."
   },
-  'tensorforest': {
+  {
     id: "2",
     title: "TensorForest",
     description: "drone",
     year: "Present",
-    image: "drongreen.jpg",
-    slug: 'tensorforest',
-    overview: "Details about TensorForest project...",
-    background: "Details about TensorForest project...",
-    motivation: "Details about TensorForest project...",
-    team: []
+    image: "/drongreen.jpg",
+    slug: "tensorforest",
+    content: "Full description of TensorForest project..."
   },
-  'white-oaks-robotics-club': {
+  {
     id: "3",
     title: "White Oaks Robotics Club",
     description: "we make robots",
     year: "Present",
-    image: "Robotics Photo.jpg",
-    slug: 'white-oaks-robotics-club',
-    overview: "Information about the robotics club...",
-    background: "Information about the robotics club...",
-    motivation: "Information about the robotics club...",
-    team: []
+    image: "/Robotics Photo.jpg",
+    slug: "white-oaks-robotics-club",
+    content: "Full description of White Oaks Robotics Club project..."
   }
-};
+];
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const project = projects[params.slug];
-
+  
+  // Find the current project based on the slug
+  const project = projects.find(p => p.slug === params.slug);
+  
   // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -84,159 +70,94 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
     setMenuOpen(!menuOpen);
   };
 
-  const navigateToPage = (page: string) => {
-    window.location.href = `/${page}`;
-    setMenuOpen(false);
-  };
-
-  const navigateToHome = () => {
-    window.location.href = '/';
-  };
-
   if (!project) {
     return <div>Project not found</div>;
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Navigation bar */}
-      <nav className="p-4 flex items-center space-x-2">
-        <div className="flex items-center space-x-2">
-          <button onClick={navigateToHome} className="text-gray-400 hover:text-white">
-            sa
-          </button>
-          <span className="text-gray-400">/</span>
-          <button onClick={toggleMenu} className="text-gray-400 hover:text-white">
-            ...
-          </button>
-          <span className="text-gray-400">/</span>
-          <span className="text-white">
-            projects
-          </span>
+    <div className="min-h-screen bg-black text-white p-6">
+      {/* Custom breadcrumb that matches the experience page pattern */}
+      <div className="absolute top-8 left-8 z-10">
+        <div className="text-sm hover:text-gray-300 transition-colors">
+          <Link href="/" className="hover:text-gray-300">SA</Link>
+          <span className="mx-1">/</span>
+          
+          <span onClick={toggleMenu} className="cursor-pointer hover:text-white mx-1">...</span>
+          <span className="mx-1">/</span>
+          
+          <Link href="/experience" className="hover:text-gray-300">experience</Link>
+          <span className="mx-1">/</span>
+          
+          <Link href="/experience?tab=Projects" className="hover:text-gray-300">projects</Link>
+          <span className="mx-1">/</span>
+          
+          <span className="text-white">{project.slug}</span>
         </div>
         
         {menuOpen && (
-          <div className="absolute top-12 left-12 w-48 bg-black border border-gray-800 rounded-md shadow-lg z-10" ref={menuRef}>
+          <div className="absolute top-6 left-0 w-48 bg-black border border-gray-800 rounded-md shadow-lg z-10" ref={menuRef}>
             <div className="py-1">
-              <button 
-                onClick={() => navigateToPage('home')}
+              <Link 
+                href="/"
                 className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+                onClick={() => setMenuOpen(false)}
               >
                 home
-              </button>
-              <button 
-                onClick={() => navigateToPage('timeline')}
+              </Link>
+              <Link 
+                href="/timeline"
                 className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+                onClick={() => setMenuOpen(false)}
               >
                 timeline
-              </button>
-              <button 
-                onClick={() => navigateToPage('resume')}
+              </Link>
+              <Link 
+                href="/resume"
                 className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+                onClick={() => setMenuOpen(false)}
               >
                 resume
-              </button>
-              <button 
-                onClick={() => navigateToPage('fieldnotes')}
+              </Link>
+              <Link 
+                href="/fieldnotes"
                 className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+                onClick={() => setMenuOpen(false)}
               >
                 fieldnotes
-              </button>
-              <button 
-                onClick={() => navigateToPage('experience')}
+              </Link>
+              <Link 
+                href="/experience"
                 className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
+                onClick={() => setMenuOpen(false)}
               >
                 experience
-              </button>
+              </Link>
             </div>
           </div>
         )}
-      </nav>
+      </div>
 
-      {/* Banner Image Container */}
-      <div className="relative w-full h-64 overflow-hidden flex justify-center items-center">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10" />
-        <div className="w-[800px] h-48 relative transform perspective-1000 rotate-x-12 shadow-2xl">
-          <img
-            src={`/${project.image}`}
-            alt={project.title}
-            className="w-full h-full object-cover rounded-lg"
+      {/* Project content */}
+      <article className="max-w-3xl mx-auto pt-20">
+        <div className="relative w-full h-[200px] mb-8 rounded-lg overflow-hidden">
+          <img 
+            src={project.image} 
+            alt={project.title} 
+            className="w-full h-full object-cover"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-3xl italic font-serif text-center mb-12">{project.title}</h1>
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-serif italic mb-2">{project.title}</h1>
+          <p className="text-gray-300 text-sm">{project.year}</p>
+        </div>
         
-        {/* Overview Section */}
-        <div className="mb-12">
-          <h2 className="text-xl font-normal mb-4">Overview</h2>
-          <p className="text-gray-400">{project.overview}</p>
+        <div className="prose prose-invert max-w-none px-6">
+          <p>{project.content || project.description}</p>
+          {/* Add more project content here */}
         </div>
-
-        {/* Team Section - if team exists */}
-        {project.team && (
-          <div className="grid grid-cols-2 gap-4 mb-12">
-            <div>
-              <h2 className="text-xl font-normal mb-4">Team</h2>
-              <div className="space-y-1">
-                {project.team.map((member, index) => (
-                  <div key={index}>
-                    {member.link ? (
-                      <a 
-                        href={member.link}
-                        className="text-gray-400 hover:text-white transition-colors"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {member.name}
-                      </a>
-                    ) : (
-                      <span className="text-gray-400">{member.name}</span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex justify-end">
-              <div>
-                <h2 className="text-xl font-normal mb-4">Team</h2>
-                <div className="space-y-1">
-                  {project.team.map((member, index) => (
-                    <div key={`right-${index}`}>
-                      {member.link ? (
-                        <a 
-                          href={member.link}
-                          className="text-gray-400 hover:text-white transition-colors"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {member.name}
-                        </a>
-                      ) : (
-                        <span className="text-gray-400">{member.name}</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Background Section */}
-        <div className="mb-12">
-          <h2 className="text-xl font-normal mb-4">Background</h2>
-          <p className="text-gray-400">{project.background}</p>
-        </div>
-
-        {/* Motivation Section */}
-        <div className="mb-12">
-          <h2 className="text-xl font-normal mb-4">Motivation</h2>
-          <p className="text-gray-400">{project.motivation}</p>
-        </div>
-      </div>
+      </article>
     </div>
   );
 } 

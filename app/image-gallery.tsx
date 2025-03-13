@@ -3,7 +3,11 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
-export default function ImageGallery() {
+interface ImageGalleryProps {
+  orientation?: 'horizontal' | 'vertical'
+}
+
+export default function ImageGallery({ orientation = 'vertical' }: ImageGalleryProps) {
   // Images array to be duplicated for infinite scroll
   const images = [
     { src: "/photo1.jpg?height=400&width=600", alt: "Event photo" },
@@ -106,6 +110,31 @@ export default function ImageGallery() {
       container.removeEventListener("wheel", handleScroll)
     }
   }, [isUserScrolling, images.length])
+
+  if (orientation === 'horizontal') {
+    return (
+      <div className="relative overflow-hidden">
+        <div className="flex overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+          {images.map((item) => (
+            <div 
+              key={item.src} 
+              className="flex-shrink-0 w-[85vw] h-[200px] mx-2 snap-center"
+            >
+              <div className="relative w-full h-full overflow-hidden rounded-lg">
+                <Image
+                  src={item.src || "/placeholder.svg"}
+                  alt={item.alt}
+                  width={600}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="relative h-[80vh] md:h-[90vh]">
