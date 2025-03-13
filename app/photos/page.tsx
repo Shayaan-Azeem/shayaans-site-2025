@@ -141,7 +141,7 @@ function PhotosPageContent() {
       location: "Oakville, ON",
       image: "/polaroids/10xeng.png",
       category: 'polaroids',
-      songUrl: ""
+      songUrl: "https://open.spotify.com/track/1auxYwYrFRqZP7t3s7w4um?si=3cf2d5a2f7b74500"
     },
     {
       id: "13",
