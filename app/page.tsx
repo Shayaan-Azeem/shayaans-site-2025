@@ -42,7 +42,7 @@ export default function Home() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-gray-300 transition-colors">
+                  <Link href="/fieldnotes" className="hover:text-gray-300 transition-colors">
                     Fieldnotes
                   </Link>
                 </li>
@@ -89,7 +89,7 @@ export default function Home() {
                   <li className="flex items-start">
                     <span className="mr-2">•</span>
                     <div>
-                      Organized Apocalypse Hacks 🎉—Canada’s largest high school hackathon—bringing together 150+ students to inspire the next generation of programmers.
+                      Organized Apocalypse Hacks 🎉—Canada's largest high school hackathon—bringing together 150+ students to inspire the next generation of programmers.
                     </div>
                   </li>
                   <li className="flex items-start">
