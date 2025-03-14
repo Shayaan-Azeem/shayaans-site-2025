@@ -45,7 +45,10 @@ export default function Home() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/resume" className="hover:text-gray-300 transition-colors">
+                  <Link 
+                    href="/Shayaan%20Azeem%20-%20Resume%20(March%202025).pdf" 
+                    className="hover:text-gray-300 transition-colors"
+                  >
                     Resume
                   </Link>
                 </li>

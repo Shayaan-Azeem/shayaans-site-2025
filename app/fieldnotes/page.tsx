@@ -56,7 +56,15 @@ export default function FieldNotes() {
           <span onClick={toggleMenu} className="cursor-pointer hover:text-white mx-1">...</span>
           <span className="mx-1">/</span>
           
-          <span className="text-white">fieldnotes</span>
+          <Link href="/fieldnotes" className="hover:text-gray-300">fieldnotes</Link>
+          <span className="mx-1">/</span>
+          
+          <Link 
+            href="/Shayaan%20Azeem%20-%20Resume%20(March%202025).pdf" 
+            className="hover:text-gray-300"
+          >
+            Resume
+          </Link>
         </div>
         
         {menuOpen && (
@@ -77,7 +85,7 @@ export default function FieldNotes() {
                 experience
               </Link>
               <Link 
-                href="/resume"
+                href="/Shayaan%20Azeem%20-%20Resume%20(March%202025).pdf"
                 className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
                 onClick={() => setMenuOpen(false)}
               >

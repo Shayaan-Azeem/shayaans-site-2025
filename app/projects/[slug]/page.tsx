@@ -312,7 +312,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 timeline
               </Link>
               <Link 
-                href="/resume"
+                href="/Shayaan%20Azeem%20-%20Resume%20(March%202025).pdf"
                 className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
                 onClick={() => setMenuOpen(false)}
               >
