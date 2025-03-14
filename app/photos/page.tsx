@@ -554,6 +554,19 @@ function PhotosPageContent() {
           </div>
         )}
       </div>
+      {/* Spotify Embed */}
+      <div className="flex justify-center my-8">
+        <iframe
+          style={{ borderRadius: '10px' }}
+          src="https://open.spotify.com/embed/playlist/5MdATgRt5FmKs6A1tJDT6E?utm_source=generator&theme=0"
+          width="80%"
+          height="100"
+          frameBorder="0"
+          allowFullScreen
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
   );
 } 
