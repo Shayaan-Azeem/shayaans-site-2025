@@ -179,7 +179,7 @@ function PhotosPageContent() {
       id: "16",
       title: "angelhacks toronto",
       location: "WeWork Toronto",
-      image: "/polaroids/thegang.png",
+      image: "/polaroids/TheGang.png",
       category: 'polaroids',
       songUrl: "https://open.spotify.com/track/6wXPV6dNRAhFavrRaCdMXT?si=990666c03feb4eea"
     },
