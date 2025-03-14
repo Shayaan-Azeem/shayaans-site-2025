@@ -198,37 +198,37 @@ function PhotosPageContent() {
     {
       id: "film1",
       location: "New York City, NY",
-      image: "/emulation/littlepak.jpg",
+      image: "/emulation/littlepak.JPG",
       category: 'film'
     },
     {
       id: "film2",
       location: "New York City, NY",
-      image: "/emulation/mainbridge.jpg",
+      image: "/emulation/mainbridge.JPG",
       category: 'film'
     },
     {
       id: "film3",
       location: "New York City, NY",
-      image: "/emulation/brownbuilding.jpg",
+      image: "/emulation/brownbuilding.JPG",
       category: 'film'
     },
     {
       id: "film4",
       location: "New York City, NY",
-      image: "/emulation/pipe.jpg",
+      image: "/emulation/pipe.JPG",
       category: 'film'
     },
     {
       id: "film5",
       location: "New York City, NY",
-      image: "/emulation/sidebridge.jpg",
+      image: "/emulation/sidebridge.JPG",
       category: 'film'
     },
     {
       id: "film6",
       location: "New York City, NY",
-      image: "/emulation/atm.jpg",
+      image: "/emulation/atm.JPG",
       category: 'film'
     }
   ];
