@@ -95,7 +95,6 @@ const projects: Project[] = [
               <li>Mar 8 - We're actually gonna make this happen call!</li>
               <li>Mar 14 - Speaking with the event producer (shoutout to Jennifer for all the help) + visiting the venue</li>
             </ul>
-            <img src="/apoimages/12am.png" alt="Late Night Work" className="rounded-lg mb-4" />
           </div>
   
           <div className="mb-10">
@@ -155,19 +154,23 @@ const projects: Project[] = [
             <p className="mb-6">
               From March to May 17th, we barely slept. There were 2 AM Slack calls on school nights, all-day Saturday meetings, and a ridiculous amount of last-minute scrambling. But somehow, we made it happen.
             </p>
-            <img src="/apoimages/12am.png" alt="Late Night Work" className="rounded-lg mb-4" />
+            <div className="my-6">
+              <img src="/apoimages/12am.png" alt="Late Night Work" className="rounded-lg" />
+            </div>
           </div>
   
           <div className="mb-10">
-            <h2 className="text-2xl font-inter mb-4">How We Organized (It Was Very Odd)</h2>
+            <h2 className="text-2xl font-inter mb-4">How We Organized (we were just built different tho lol)</h2>
             <p className="mb-4">
-              Most hackathons have committees, divisions, org charts. We did not.
+              Most hackathons have subteams, divisions, commitees. We did not.
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-1">
               <li><span className="font-medium">No Specified Roles</span> - People just took on what they were good at (me? Logistics, Branding/Marketing, Media, and a whole bunch of whatever else we needed, etc.).</li>
               <li><span className="font-medium">Team-wide Stand-up Meetings</span> - NOT split by divisions or clusters. This allowed everyone to be in the loop and understand where we were all at.</li>
               <li><span className="font-medium">Small but Agile Team</span> - Our team was 7-8 people until the very end when it became 10. Even at this scale, we remained agile, working in sync, sharing tasks, and being responsible for our own things much more easily. There was no redundancy, no one to report to, no stupid chains of command.</li>
-              <li><span className="font-medium">Idea-Driven Culture</span> - Anyone could pitch an idea. If you had something cool in mind and could pull it off, you just… did it. No approval process, no gatekeeping. I credit this ideology to Hack Club, but it was really instilled all throughout the team. I also credit Acon for leading by doing—many of our best ideas, like the card game and bottle cap currency, came from random late night Slack messages.</li>
+              <li>
+                <span className="font-medium">Idea-Driven Culture</span> - Anyone could pitch an idea. If you had something cool in mind and could pull it off, you just… did it. No approval process, no gatekeeping. I credit this ideology to Hack Club, but it was really instilled all throughout the team. I also credit <a href="https://aconlin.vercel.app/" target="_blank" rel="noopener noreferrer">Acon</a> for leading by actually doing this! So many of our best ideas, like the card game and bottle cap currency, came from random late night Slack messages.
+              </li>
             </ul>
             
             <div className="my-6">
@@ -355,6 +358,19 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           {/* Add more project content here */}
         </div>
       </article>
+
+      <div className="flex justify-center my-8">
+        <iframe
+          style={{ borderRadius: '12px' }}
+          src="https://open.spotify.com/embed/track/1oAwsWBovWRIp7qLMGPIet?utm_source=generator&theme=0"
+          width="41%"
+          height="100"
+          frameBorder="0"
+          allowFullScreen
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
   );
 } 
