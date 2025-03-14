@@ -192,17 +192,17 @@ const projects: Project[] = [
               I'm so grateful for everyone who attended and shipped a project! It was so cool to meet everyone and people with the same interests as me. Like I said in the beginning, we set out to create a place to meet our people, and we definitely did just that.
             </p>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 my-6">
-              <img src="/apoimages/event0.jpg" alt="Event Image 0" className="rounded-lg object-cover h-full" />
-              <img src="/apoimages/event1.jpeg" alt="Event Image 1" className="rounded-lg object-cover h-full" />
-              <img src="/apoimages/event2.jpg" alt="Event Image 2" className="rounded-lg object-cover h-full" />
-              <img src="/apoimages/event3.jpg" alt="Event Image 3" className="rounded-lg object-cover h-full" />
-              <img src="/apoimages/event4.png" alt="Event Image 4" className="rounded-lg object-cover h-full" />
-              <img src="/apoimages/event6.jpg" alt="Event Image 6" className="rounded-lg object-cover h-full" />
-              <img src="/apoimages/lightiningtalk1.jpg" alt="Lightning Talk" className="rounded-lg object-cover h-full" />
-              <img src="/apoimages/lockedineddie.png" alt="Locked in Eddie" className="rounded-lg object-cover h-full" />
-              <img src="/apoimages/selfie.png" alt="Selfie" className="rounded-lg object-cover h-full" />
-              <img src="/apoimages/workshop1.png" alt="Workshop 1" className="rounded-lg object-cover h-full" />
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 my-6">
+              <img src="/apoimages/event0.jpg" alt="Event Image 0" className="rounded-lg object-cover h-full w-full" />
+              <img src="/apoimages/event1.jpeg" alt="Event Image 1" className="rounded-lg object-cover h-full w-full" />
+              <img src="/apoimages/event2.jpg" alt="Event Image 2" className="rounded-lg object-cover h-full w-full" />
+              <img src="/apoimages/event3.jpg" alt="Event Image 3" className="rounded-lg object-cover h-full w-full" />
+              <img src="/apoimages/event4.png" alt="Event Image 4" className="rounded-lg object-cover h-full w-full" />
+              <img src="/apoimages/event6.jpg" alt="Event Image 6" className="rounded-lg object-cover h-full w-full" />
+              <img src="/apoimages/lightiningtalk1.jpg" alt="Lightning Talk" className="rounded-lg object-cover h-full w-full" />
+              <img src="/apoimages/lockedineddie.png" alt="Locked in Eddie" className="rounded-lg object-cover h-full w-full" />
+              <img src="/apoimages/selfie.png" alt="Selfie" className="rounded-lg object-cover h-full w-full" />
+              <img src="/apoimages/workshop1.png" alt="Workshop 1" className="rounded-lg object-cover h-full w-full" />
             </div>
 
             {/* Combined paragraph for the video recap */}
@@ -363,7 +363,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         <iframe
           style={{ borderRadius: '12px' }}
           src="https://open.spotify.com/embed/track/1oAwsWBovWRIp7qLMGPIet?utm_source=generator&theme=0"
-          width="41%"
+          width="80%"
           height="100"
           frameBorder="0"
           allowFullScreen
