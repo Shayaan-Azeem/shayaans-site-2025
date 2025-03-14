@@ -71,7 +71,7 @@ const projects: Project[] = [
             <h2 className="text-2xl font-inter mb-4">Rejection Emails</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
               <img src="/apoimages/rejection1.png" alt="Rejection Email 1" className="rounded-lg" />
-              <img src="/apoimages/rejection2.PNG" alt="Rejection Email 2" className="rounded-lg" />
+              <img src="/apoimages/reject2.png" alt="Rejection Email 2" className="rounded-lg" />
               <img src="/apoimages/rejection3.png" alt="Rejection Email 3" className="rounded-lg" />
               <img src="/apoimages/rejection4.png" alt="Rejection Email 4" className="rounded-lg" />
             </div>
