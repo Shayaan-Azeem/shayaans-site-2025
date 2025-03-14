@@ -99,13 +99,13 @@ function PhotosPageContent() {
       id: "7",
       title: "water water water loo loo loo",
       location: "Waterloo, ON",
-      image: "/polaroids/water water water.png",
+      image: "/polaroids/water water.png",
       category: 'polaroids',
-      songUrl: "https://open.spotify.com/track/1WaqQIJ0iENGWZ1QmYvYNK?si=2c7ace1c075042e"
+      songUrl: "https://open.spotify.com/track/1v0uVPU6BWcbog5BiWLWVa?si=0a01a3cab11149a9"
     },
     {
       id: "8",
-      title: "me and my favourite future nobel physicist",
+      title: "robotics presidents!",
       location: "Oakville, ON",
       image: "/polaroids/nobel physic.PNG",
       category: 'polaroids',
@@ -113,7 +113,7 @@ function PhotosPageContent() {
     },
     {
       id: "9",
-      title: "777 a little piece of heaven",
+      title: "777",
       location: "Toronto, ON",
       image: "/polaroids/777.png",
       category: 'polaroids',
@@ -128,6 +128,14 @@ function PhotosPageContent() {
       songUrl: "https://open.spotify.com/track/5dn6QANKbf76pANGjMBida?si=92c84e6d67764094"
     },
     {
+      id: "19",
+      title: "ycombinator core",
+      location: "Waterloo, ON",
+      image: "/polaroids/water water water.png",
+      category: 'polaroids',
+      songUrl: "https://open.spotify.com/track/1Ukxccao1BlWrPhYkcXbwZ?si=9fee189e2ea547bb"
+    },
+    {
       id: "11",
       title: "dumbo!",
       location: "New York City, NY",
@@ -137,7 +145,7 @@ function PhotosPageContent() {
     },
     {
       id: "12",
-      title: "future 100x engineers",
+      title: "future unicorn founders",
       location: "Oakville, ON",
       image: "/polaroids/10xeng.png",
       category: 'polaroids',
@@ -145,7 +153,7 @@ function PhotosPageContent() {
     },
     {
       id: "13",
-      title: "entropy ifyyk",
+      title: "entropy ifykyk",
       location: "Oakville, ON",
       image: "/polaroids/entropy ifyyk.PNG",
       category: 'polaroids',
