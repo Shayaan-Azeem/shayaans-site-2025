@@ -220,7 +220,20 @@ const projects: Project[] = [
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
-            </div>
+              </div>
+                <div className="flex justify-center my-8">
+            <iframe
+              style={{ borderRadius: '12px' }}
+              src="https://open.spotify.com/embed/track/1oAwsWBovWRIp7qLMGPIet?utm_source=generator&theme=0"
+              width="80%"
+              height="100"
+              frameBorder="0"
+              allowFullScreen
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe>
+          </div>
+            
           </div>
         </>
       )
@@ -230,16 +243,106 @@ const projects: Project[] = [
     title: "TensorForest",
     description: "drone",
     year: "Present",
-    image: "/drongreen.jpg",
+    image: "/tensorforestcover.png", // Ensure this path is correct
     slug: "tensorforest",
-    content: "Full description of TensorForest project..."
-  },
+    content: <>
+    <div className="mb-10">
+      <h2 className="text-2xl font-inter mb-4">The Problem</h2>
+      <p className="mb-6">
+        Wildfires have become increasingly frequent and severe, devastating forest ecosystems and contributing significantly to greenhouse gas emissions. The UN Environment Programme (UNEP) predicts a global rise in extreme wildfires by 14% by 2030, 30% by 2050, and 50% by 2100. Climate change and wildfires form a dangerous feedback loop, worsening the damage and increasing the need for fire prevention.
+      </p>
+      <div className="my-6 flex justify-center">
+        <div className="w-3/4">
+          <img src="/tensorforest/tensorforestv1.png" alt="TensorForest V1" className="rounded-lg w-full" />
+          <p className="text-sm text-gray-500 mt-2">Our first prototype of TensorForest, designed to capture high-resolution forest data for wildfire risk assessment.</p>
+        </div>
+      </div>
+      <h2 className="text-2xl font-inter mb-4">The Opportunity</h2>
+      <p className="mb-6">
+        Effective wildfire prevention requires accurate, up to date/ real-time data. However, current solutions have big limitations:
+      </p>
+      <ul className="list-disc pl-6 mb-6 space-y-1">
+        <li><span className="font-medium">Expensive drones</span>: High-end wildfire monitoring drones cost $25,000 or more, making them inaccessible to many organizations and communities.</li>
+        <li><span className="font-medium">Manual surveying</span>: Traditional forest monitoring methods are slow, labor-intensive, and costly.</li>
+        <li><span className="font-medium">Limited access</span>: Fire departments in wealthier nations have access to advanced technology, while vulnerable communities, such as farmers in Kenya, Indonesia, and Vietnam, lack affordable wildfire prevention tools.</li>
+        <li><span className="font-medium">Satellite imagery limitations</span>: Satellites do not provide high-resolution, up-to-date data necessary for proactive fire prevention.</li>
+      </ul>
+    </div>
+  
+    <div className="mb-10">
+      <h2 className="text-2xl font-inter mb-4">How It Works</h2>
+      <p className="mb-6 font-inter">
+        TensorForest is an autonomous drone system designed to provide high-resolution forest monitoring and wildfire prediction. The process includes:
+      </p>
+      <ul className="list-disc pl-6 mb-6 space-y-1">
+        <li><span className="font-medium">Selecting a target region</span> for assessment.</li>
+        <li><span className="font-medium">Generating a flight plan</span> to autonomously cover the area.</li>
+        <li><span className="font-medium">Capturing multiple high-resolution images and spatial data</span>.</li>
+        <li><span className="font-medium">Stitching images together using OpenCV</span> to create a detailed forest map.</li>
+        <li><span className="font-medium">Generating a Digital Elevation Model (DEM)</span> by processing spatial points.</li>
+        <li><span className="font-medium">Running the data through a vision transformer model</span>, integrating climate data such as temperature and precipitation.</li>
+        <li><span className="font-medium">Producing a wildfire risk heat map</span>, classifying vegetation and identifying high-risk areas/how fire is likely to spread based on detected forest fire lines.</li>
+        <li><span className="font-medium">Utilizing data for fire prevention planning</span>, helping determine optimal locations to cut fire lines and mitigate wildfire spread.</li>
+      </ul>
+      
+      <div className="my-8">
+        <img src="/tensorforest/tensorforest v3 .png" alt="TensorForest V3" className="rounded-lg w-full" />
+        <p className="text-sm text-gray-500 mt-2">The latest version of TensorForest featuring improved hardware and AI capabilities for more accurate wildfire risk prediction.</p>
+      </div>
+  
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+        <div>
+          <img src="/tensorforest/vegatation map capture, stich1.png" alt="Vegetation Map Capture" className="rounded-lg w-full" />
+          <p className="text-sm text-gray-500 mt-2">A stitched vegetation map created by TensorForest, showcasing our ability to create comprehensive forest visualizations from multiple drone captures.</p>
+        </div>
+        <div>
+          <img src="/tensorforest/Normalized Difference Vegetation Index  capture for heat map.png" alt="NDVI Capture for Heat Map" className="rounded-lg w-full" />
+          <p className="text-sm text-gray-500 mt-2">An NDVI capture used to generate heat maps, showing vegetation health and potential fire risk areas.</p>
+        </div>
+        <div>
+          <img src="/tensorforest/gopro to capture Normalized Difference Vegetation Index.png" alt="GoPro NDVI Capture" className="rounded-lg w-full" />
+          <p className="text-sm text-gray-500 mt-2">Our modified GoPro setup used to capture NDVI data, providing crucial vegetation health information for risk assessment.</p>
+        </div>
+        <div>
+          <img src="/tensorforest/campimod.png" alt="Pi Computer Module" className="rounded-lg w-full" />
+          <p className="text-sm text-gray-500 mt-2">The Raspberry Pi computer module with Edge TPU that powers our onboard image processing and AI analysis capabilities.</p>
+        </div>
+      </div>
+    </div>
+  
+    <div className="mb-10">
+      <h2 className="text-2xl font-inter mb-4">Current Development & Funding Needs</h2>
+      <p className="mb-6">
+        We are actively seeking microgrants and funding to enhance TensorForest's capabilities:
+      </p>
+      <ol className="list-decimal pl-6 mb-6 space-y-2">
+        <li>
+          <span className="font-medium">Scaling hardware and software</span>
+          <ul className="list-disc pl-6 mt-2 space-y-1">
+            <li>Acquiring higher-resolution LiDAR sensors for improved accuracy.</li>
+            <li>Developing longer-range drones for large-scale forest monitoring.</li>
+          </ul>
+        </li>
+        <li>
+          <span className="font-medium">Enhancing AI Model Accuracy</span>
+          <ul className="list-disc pl-6 mt-2 space-y-1">
+            <li>Continuing to train and refine the wildfire risk assessment model, requiring more computing power and diverse datasets for improved accuracy.</li>
+          </ul>
+        </li>
+      </ol>
+      
+      <h2 className="text-2xl font-inter mb-4">Get Involved</h2>
+      <p className="mb-6">
+        We are continuously working on improving TensorForest. If you're interested in this project or want to collaborate, feel free to reach out at <a href="mailto:shayaanazeem@gmail.com" className="text-blue-500 hover:underline">shayaanazeem@gmail.com</a>.
+      </p>
+    </div>
+  </>  },
   {
     id: "3",
     title: "White Oaks Robotics Club",
     description: "we make robots",
     year: "Present",
-    image: "/roboticsphoto.png",
+    image: "/zaneandshayaan.png",
     slug: "white-oaks-robotics-club",
     content: "Full description of White Oaks Robotics Club project..."
   }
@@ -359,18 +462,6 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
       </article>
 
-      <div className="flex justify-center my-8">
-        <iframe
-          style={{ borderRadius: '12px' }}
-          src="https://open.spotify.com/embed/track/1oAwsWBovWRIp7qLMGPIet?utm_source=generator&theme=0"
-          width="80%"
-          height="100"
-          frameBorder="0"
-          allowFullScreen
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        ></iframe>
-      </div>
     </div>
   );
 } 
