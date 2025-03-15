@@ -21,7 +21,7 @@ const projects: Project[] = [
     title: "Apocalypse Hacks",
     description: "Canada's largest high school hackathon",
     year: "2024",
-    image: "/vickyapo.jpeg",
+    image: "/projectcover/vickyapo.jpeg",
     slug: "apocalypse-hacks",
       content: (
         <>
@@ -243,7 +243,7 @@ const projects: Project[] = [
     title: "TensorForest",
     description: "drone",
     year: "Present",
-    image: "/tensorforestcover.png", // Ensure this path is correct
+    image: "/projectcover/tensorforestcover.png", // Ensure this path is correct
     slug: "tensorforest",
     content: <>
     <div className="mb-10">
@@ -342,7 +342,7 @@ const projects: Project[] = [
     title: "White Oaks Robotics Club",
     description: "we make robots",
     year: "Present",
-    image: "/zaneandshayaan.png",
+    image: "/projectcover/zaneandshayaan.png",
     slug: "white-oaks-robotics-club",
     content:(
       <a 
