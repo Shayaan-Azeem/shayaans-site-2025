@@ -344,7 +344,16 @@ const projects: Project[] = [
     year: "Present",
     image: "/zaneandshayaan.png",
     slug: "white-oaks-robotics-club",
-    content: "Full description of White Oaks Robotics Club project..."
+    content:(
+      <a 
+        href="https://wossrobotics.ca/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="text-blue-500 hover:underline"
+      >
+        Visit the website for more info. I'm gonna come back and upload this sometime soon xd
+      </a>
+    )
   }
 ];
 

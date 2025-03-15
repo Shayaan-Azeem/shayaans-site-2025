@@ -16,12 +16,6 @@ const blogPosts = [
     date: "Jul 2024",
     image: "/droneblue.png",
     slug: "what-i-learnt-from-organizing-a-hackathon"
-  },
-  {
-    title: "You Can Just Do Things",
-    date: "Jul 2024",
-    image: "/roboticsphoto.jpg",
-    slug: "you-can-just-do-things"
   }
 ];
 

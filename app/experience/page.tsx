@@ -234,15 +234,15 @@ function ExperiencePageContent() {
       title: "Apocalypse Hacks",
       description: "Canada's largest high school hackathon",
       year: "2024",
-      image: "vickyapo.jpeg",
+      image: "/vickyapo.jpeg",
       slug: "apocalypse-hacks"
     },
     {
       id: "2",
       title: "TensorForest",
-      description: "drone",
+      description: "building drones to stopping forest fires before they even start",
       year: "Present",
-      image: "drongreen.jpg",
+      image: "/tensorforestcover.png",
       slug: "tensorforest"
     },
     {
@@ -250,7 +250,7 @@ function ExperiencePageContent() {
       title: "White Oaks Robotics Club",
       description: "we make robots",
       year: "Present",
-      image: "Robotics Photo.jpg",
+      image: "/zaneandshayaan.png",
       slug: "white-oaks-robotics-club"
     }
   ];
