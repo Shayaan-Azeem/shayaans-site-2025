@@ -14,13 +14,13 @@ export default function ImageGallery({ orientation = 'vertical' }: ImageGalleryP
   const [shouldAnimate, setShouldAnimate] = useState(true)
 
   const images = [
-    { src: "/photo1.jpg?height=400&width=600", alt: "Event photo" },
-    { src: "/photo2.jpg?height=400&width=600", alt: "Presentation photo" },
-    { src: "/photo3.jpg?height=400&width=600", alt: "Conference photo" },
-    { src: "/photo4.jpg?height=400&width=600", alt: "Additional photo" },
-    { src: "/photo5.jpg?height=400&width=600", alt: "Summit photo" },
-    { src: "/photo6.jpg?height=400&width=600", alt: "Team photo" },
-    { src: "/photo7.jpg?height=400&width=600", alt: "Project photo" },
+    { src: "/homephotos/photo1.jpg?height=400&width=600", alt: "Event photo" },
+    { src: "/homephotos/photo2.jpg?height=400&width=600", alt: "Presentation photo" },
+    { src: "/homephotos/photo3.jpg?height=400&width=600", alt: "Conference photo" },
+    { src: "/homephotos/photo4.jpg?height=400&width=600", alt: "Additional photo" },
+    { src: "/homephotos/photo5.jpg?height=400&width=600", alt: "Summit photo" },
+    { src: "/homephotos/photo6.jpg?height=400&width=600", alt: "Team photo" },
+    { src: "/homephotos/photo7.jpg?height=400&width=600", alt: "Project photo" },
   ]
 
   // Only duplicate images twice now instead of three times
