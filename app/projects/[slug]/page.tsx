@@ -333,7 +333,7 @@ const projects: Project[] = [
       
       <h2 className="text-2xl font-inter mb-4">Get Involved</h2>
       <p className="mb-6">
-        We are continuously working on improving TensorForest. If you're interested in this project or want to collaborate, feel free to reach out at <a href="mailto:shayaanazeem@gmail.com" className="text-blue-500 hover:underline">shayaanazeem@gmail.com</a>.
+        We are continuously working on improving TensorForest. If you're interested in this project or want to collaborate, feel free to reach out at <a href="mailto:shayaanazeem10@gmail.com" className="text-blue-500 hover:underline">shayaanazeem10@gmail.com</a>.
       </p>
     </div>
   </>  },
