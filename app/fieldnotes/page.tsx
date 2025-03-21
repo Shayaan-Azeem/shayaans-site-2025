@@ -6,9 +6,9 @@ import Breadcrumb from '@/components/Breadcrumb';
 
 const blogPosts = [
   {
-    title: "Hack The North 2024",
-    date: "Jul 2024",
-    image: "/photo2.jpg",
+    title: "17 lessons from 17",
+    date: "Dec 2024",
+    image: "/disposable/train.JPG",
     slug: "hack-the-north-2024"
   },
   {

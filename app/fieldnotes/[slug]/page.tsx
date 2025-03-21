@@ -4,14 +4,35 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Breadcrumb from '@/components/Breadcrumb';
 
+
 // This would typically come from a database or CMS
 const blogPosts = [
   {
-    title: "Hack The North 2024",
-    date: "Jul 2024",
-    image: "/photo2.jpg",
+    title: "17 lessons from 17",
+    date: "Dec 2024",
+    image: "/disposable/train.JPG",
     slug: "hack-the-north-2024",
-    content: "Content coming soon..."
+    content: (
+      <ul className="list-disc pl-6">
+        <li>Everything happens for a reason</li>
+        <li>Have the will to take risks</li>
+        <li>The best way to learn is by doing</li>
+        <li>You are never owed anything by anyone, so don't expect anything</li>
+        <li>Put yourself in situations to be in the right place at the right time</li>
+        <li>Seek discomfort (as cliché as this sounds {`{shoutout yestheory}`})</li>
+        <li>Self-doubt is the enemy of progress: the second you stop believing in yourself the battle has already been lost because if you don't have conviction in yourself, there is no point in doing things</li>
+        <li><strong>Keep going</strong></li>
+        <li>The greatest things are those that can compound</li>
+        <li>Work with people you believe in</li>
+        <li>Anxiety comes from knowing you can be doing better, and inaction is what leads to that situation, so just keep going</li>
+        <li>Working with great people makes it much better</li>
+        <li>Surround yourself with those who are better than you</li>
+        <li>Things don't need to be done perfectly; they just need to be done quickly: perfection is a zero-sum game, so it's more important to get things done and iterate. This can apply to anything from building prototypes to taking notes in a textbook</li>
+        <li>Communication is more important than anything: miscommunication is the core of most problems. This is an easy fix: communicate clearly and concisely</li>
+        <li>Comparison is the thief of joy, because the grass is always greener on the other side: focus on watering your own grass and become busy enough to not compare to others</li>
+        <li>Don't take anything for granted</li>
+      </ul>
+    )
   },
   {
     title: "What I Learnt From Organizing a Hackathon",
@@ -25,7 +46,11 @@ const blogPosts = [
 export default function BlogPost({ params }: { params: { slug: string } }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const post = blogPosts.find(post => post.slug === params.slug);
+  
+  // Unwrap params using React.use()
+  const { slug } = React.use(params);
+
+  const post = blogPosts.find(post => post.slug === slug);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -61,7 +86,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           <Link href="/fieldnotes" className="hover:text-gray-300">fieldnotes</Link>
           <span className="mx-1">/</span>
           
-          <span className="text-white">{post.slug}</span>
+          <span className="text-white">{slug}</span>
         </div>
         
         {menuOpen && (
@@ -107,7 +132,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         )}
       </div>
       
-      <Breadcrumb segments={['fieldnotes', params.slug]} />
+      <Breadcrumb segments={['fieldnotes', slug]} />
       
       <article className="max-w-3xl mx-auto pt-20">
         <div className="relative w-full h-[200px] mb-8 rounded-lg overflow-hidden">
@@ -125,7 +150,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         </div>
         
         <div className="prose prose-invert max-w-none px-6">
-          <p>{post.content}</p>
+          {post.content}
         </div>
       </article>
     </div>
